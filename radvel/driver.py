@@ -330,6 +330,10 @@ def ic_compare(args):
 
     if args.simple:
         statsdictlist += radvel.fitting.model_comp(ipost, params=[], verbose=args.verbose)
+        final_chisq = np.sum(ipost.likelihood.residuals()**2 / (ipost.likelihood.errorbars()**2))
+        deg_of_freedom = len(ipost.likelihood.y) - len(ipost.likelihood.get_vary_params())
+        final_chisq_reduced = final_chisq / deg_of_freedom
+        print('Reduced Chi-Square: '+str(final_chisq_reduced))
     else:
         if hasattr(args, 'fixjitter') and args.fixjitter:
             for param in ipost.params:

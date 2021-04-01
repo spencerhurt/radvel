@@ -12,17 +12,21 @@ latex = {
 }
 
 telfmts_default = {
-    'j': dict(color='k', marker=u'o', label='HIRES', mew=1),
+    'j': dict(color='k', marker='s', ms=4, label='HIRES'),
+    't': dict(color='k', marker='o', ms=4, label='TRES'),
     'k': dict(color='k', fmt='s', mfc='none', label='HIRES pre 2004', mew=1),
     'a': dict(color='g', fmt='d', label='APF'),
     'pfs': dict(color='magenta', fmt='p', label='PFS'),
     'h': dict(color='firebrick', fmt="s", label='HARPS'),
     'harps-n': dict(color='firebrick', fmt='^', label='HARPS-N'),
     'l': dict(color='g', fmt='*', label='LICK'),
+    's': dict(color='orange', fmt='^', label='SOPHIE'),
+    'c': dict(color='firebrick', fmt="s", label='CARMENES'),
 }
 telfmts_default['lick'] = telfmts_default['l']
 telfmts_default['hires_rj'] = telfmts_default['j']
 telfmts_default['hires'] = telfmts_default['j']
+telfmts_default['hires_j'] = telfmts_default['j']
 telfmts_default['hires_rk'] = telfmts_default['k']
 telfmts_default['apf'] = telfmts_default['a']
 telfmts_default['harps'] = telfmts_default['h']
@@ -34,7 +38,9 @@ telfmts_default['APF'] = telfmts_default['a']
 telfmts_default['HARPS'] = telfmts_default['h']
 telfmts_default['HARPS-N'] = telfmts_default['harps-n']
 telfmts_default['PFS'] = telfmts_default['pfs']
-
+telfmts_default['sophie'] = telfmts_default['s']
+telfmts_default['tres'] = telfmts_default['t']
+telfmts_default['carmenes'] = telfmts_default['c']
 
 cmap = nipy_spectral
 rcParams['font.size'] = 9

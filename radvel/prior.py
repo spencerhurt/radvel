@@ -14,6 +14,35 @@ class Prior(object):
         return "Generic Prior"
 
 
+class Inequality(Prior):
+
+    def __init__(self, param1, param2):
+        self.param1 = param1
+        self.param2 = param2
+
+    def __call__(self, params, vector):
+        x = vector.vector[vector.indices[self.param1]][0]
+        y = vector.vector[vector.indices[self.param2]][0]
+
+        if x > y:
+            return -np.inf
+        else:
+            return 0
+
+    def __repr__(self):
+        s = "{} constrained to be less than {}".format(self.param1, self.param2)
+        return s
+
+    def __str__(self):
+        try:
+            tex1 = model.Parameters(9).tex_labels(param_list=[self.param1])[self.param1]
+            tex2 = model.Parameters(9).tex_labels(param_list=[self.param2])[self.param2]
+            s = "{} constrained to be less than {}".format(tex1, tex2)
+        except KeyError:
+            s = self.__repr__()
+        return s
+
+
 class Gaussian(Prior):
     """Gaussian prior
 
